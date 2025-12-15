@@ -451,10 +451,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: FMODUnity::FMODUnity.Settings
   switchSettingsMigration: 1
-  HasSourceProject: 0
-  HasPlatforms: 0
-  sourceProjectPath: FMOD/StarEater/StarEater.fspro
-  sourceBankPath: FMOD/StarEater/Build
+  HasSourceProject: 1
+  HasPlatforms: 1
+  sourceProjectPath: ../LegallyDistinctPacman/FMOD/StarEater/StarEater.fspro
+  sourceBankPath: ../LegallyDistinctPacman/FMOD/StarEater/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1

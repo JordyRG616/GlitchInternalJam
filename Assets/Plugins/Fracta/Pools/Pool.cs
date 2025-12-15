@@ -75,7 +75,7 @@ public class UnityPool<T> : IPool<T> where T : Object
 {
     private Func<Vector3> PositionSetter = null;
     private Func<Quaternion> RotationSetter = null;
-    private T model;
+    private List<T> models = new List<T>();
     
     private List<T> allItems = new List<T>();
     private Queue<T> availableItems = new Queue<T>();
@@ -88,13 +88,30 @@ public class UnityPool<T> : IPool<T> where T : Object
 
     public UnityPool(T model, int initialCount = 0)
     {
-        this.model = model;
+        models.Add(model);
 
         for (int i = 0; i < initialCount; i++)
         {
             var pos = Vector3.zero;
             var rot = Quaternion.identity;
-            var item = Object.Instantiate(model, pos, rot);
+            var chosenModel = models.TakeRandom();
+            var item = Object.Instantiate(chosenModel, pos, rot);
+            allItems.Add(item);
+        }
+        
+        CreateQueueFromList();
+    }
+    
+    public UnityPool(List<T> models, int initialCount = 0)
+    {
+        this.models.AddRange(models);
+
+        for (int i = 0; i < initialCount; i++)
+        {
+            var pos = Vector3.zero;
+            var rot = Quaternion.identity;
+            var chosenModel = this.models.TakeRandom();
+            var item = Object.Instantiate(chosenModel, pos, rot);
             allItems.Add(item);
         }
         
@@ -111,6 +128,7 @@ public class UnityPool<T> : IPool<T> where T : Object
         {
             var pos = PositionSetter?.Invoke() ?? Vector3.zero;
             var rot = RotationSetter?.Invoke() ?? Quaternion.identity;
+            var model = models.TakeRandom();
             item = Object.Instantiate(model, pos, rot);
             allItems .Add(item);
         }

@@ -2,6 +2,39 @@ using UnityEngine;
 
 namespace Fracta.Core
 {
+    public static class FractaMathTools
+    {
+        public static float GetLargestValueInGroup(params float[] values)
+        {
+            var value = float.MinValue;
+
+            foreach (var number in values)
+            {
+                if (number > value)
+                {
+                    value = number;
+                }
+            }
+            
+            return value;
+        }
+        
+        public static float GetSmallerValueInGroup(params float[] values)
+        {
+            var value = float.MaxValue;
+
+            foreach (var number in values)
+            {
+                if (number < value)
+                {
+                    value = number;
+                }
+            }
+            
+            return value;
+        }
+    }
+    
     public static class FractaMathExtensions
     {
         public static float Abs(this float a)
