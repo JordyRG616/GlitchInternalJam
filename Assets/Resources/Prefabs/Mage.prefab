@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
   inputGroup: {fileID: 11400000, guid: 62379befb9cc0b445a53cd72d5f22ca5, type: 2}
+  otherCharacter: {fileID: 0}
+  connectionRadius: 2
 --- !u!114 &2316813769480257808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,7 @@ MonoBehaviour:
   particleWeapon: {fileID: 2429252069722712864}
   detectionRadius: 5
   damage: 1
+  empoweredDamage: 3
 --- !u!1 &8014340292271122262
 GameObject:
   m_ObjectHideFlags: 0
