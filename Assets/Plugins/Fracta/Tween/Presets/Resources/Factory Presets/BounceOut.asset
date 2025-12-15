@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05f93934351b644186d696186f0b28e, type: 3}
+  m_Name: BounceOut
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.03339436
+      outSlope: -0.03339436
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.10740741
+    - serializedVersion: 3
+      time: 0.4
+      value: 1
+      inSlope: 4.8421597
+      outSlope: -4.3139462
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.040740743
+      outWeight: 0.054320995
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: 4.463234
+      outSlope: -4.131997
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.056790117
+      outWeight: 0.11111111
+    - serializedVersion: 3
+      time: 0.9
+      value: 1
+      inSlope: 3.799264
+      outSlope: -3.7077281
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.09629608
+      outWeight: 0.25925928
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.8737555
+      outSlope: 3.8737555
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.16296263
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  playOnEnable: 0
+  duration: 1
+  delay: 0
+  applyDelayBetweenLoops: 0
+  loops: 0
+  tweenLoopType: 0
