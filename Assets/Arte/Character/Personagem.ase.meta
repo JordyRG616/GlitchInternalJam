@@ -2,7 +2,22 @@ fileFormatVersion: 2
 guid: a9cfe9e49780b4f428222a7ca8725fc3
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle
+    second: {fileID: 7400000, guid: 434201f05475ed84c86be78829c48cb2, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Run
+    second: {fileID: 7400000, guid: fbbb6e7b00bcf984aa4291b33f1b3589, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: death
+    second: {fileID: 7400000, guid: b115b5ee13d9e254390fea53e3f6488e, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -102,7 +117,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639014761973443107
+  platformSettingsDirtyTick: 639014767176507105
   textureAssetName: 
   singleSpriteImportData:
   - name: 
