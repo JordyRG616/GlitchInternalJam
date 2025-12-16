@@ -474,11 +474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7794058609744940943, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
       propertyPath: m_Color.g
-      value: 0.72816575
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7794058609744940943, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
       propertyPath: m_Color.r
-      value: 0.4292453
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9222430784433253969, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
       propertyPath: m_Color.a
@@ -642,7 +642,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1907100241
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3810559315073561765, guid: 1837803ae37cab348897627bee0c3348, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -798,6 +798,22 @@ PrefabInstance:
     - target: {fileID: 6075618568697832176, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794058609744940943, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794058609744940943, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794058609744940943, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794058609744940943, guid: 27fb79dc8e5815d45bef5521b9e7d907, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
