@@ -5,7 +5,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float damage;
     
+    private DropManager dropManager;
+    
     private MovementModule movementModule;
+    private HealthModule healthModule;
 
     private PlayerCharacter firstCharacter;
     private PlayerCharacter secondCharacter;
@@ -13,10 +16,26 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        dropManager = FractaGlobal.GetManager<DropManager>();
+        
         movementModule = GetComponent<MovementModule>();
+        healthModule = GetComponent<HealthModule>();
+        healthModule.OnDeath += DropExperience;
+        
         var playerCharacters = FindObjectsByType<PlayerCharacter>(FindObjectsSortMode.None);
         firstCharacter = playerCharacters[0];
         secondCharacter = playerCharacters[1];
+    }
+
+    private void DropExperience(HealthModule healthModule)
+    {
+        var killer = healthModule.LastAttacker.GetComponent<PlayerCharacter>();
+        if (killer != null)
+        {
+            var tag = killer.CharacterTag;
+            var drop = dropManager.RequestExperienceDrop();
+            drop.Setup(1, tag, transform.position);
+        }
     }
 
     private void Update()
@@ -48,7 +67,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out HealthModule healthModule))
         {
-            healthModule.TakeDamage(damage);
+            healthModule.TakeDamage(damage, gameObject);
             gameObject.SetActive(false);
         }
     }
