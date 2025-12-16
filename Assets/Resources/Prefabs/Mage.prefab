@@ -109,9 +109,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -594981323
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1549582489175326467, guid: a9cfe9e49780b4f428222a7ca8725fc3, type: 3}
   m_Color: {r: 1, g: 0.43867922, b: 0.43867922, a: 1}
   m_FlipX: 0
@@ -212,7 +212,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &279449058819592776
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCharacter
   inputGroup: {fileID: 11400000, guid: 62379befb9cc0b445a53cd72d5f22ca5, type: 2}
   otherCharacter: {fileID: 0}
+  <CharacterTag>k__BackingField: 0
   connectionRadius: 2
 --- !u!114 &2316813769480257808
 MonoBehaviour:
