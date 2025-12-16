@@ -9,6 +9,9 @@ public enum CharacterTag
 
 public class PlayerCharacter : MonoBehaviour
 {
+    private static readonly int Walking = Animator.StringToHash("Walking");
+    private static readonly int Die = Animator.StringToHash("Die");
+
     [SerializeField] private InputGroup inputGroup;
     [SerializeField] private PlayerCharacter otherCharacter;
     [field:SerializeField] public CharacterTag CharacterTag { get; private set; }
@@ -16,7 +19,9 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private float connectionRadius;
     
     private MovementModule movementModule;
+    private HealthModule healthModule;
     private WeaponModule weaponModule;
+    private Animator animator;
 
     private int currentExperience;
     private int maxExperience = 10;
@@ -28,19 +33,40 @@ public class PlayerCharacter : MonoBehaviour
     private void Start()
     {
         movementModule = GetComponent<MovementModule>();
+        healthModule = GetComponent<HealthModule>();
         weaponModule = GetComponent<WeaponModule>();
+        animator = GetComponentInChildren<Animator>();
+
+        healthModule.OnDeath += PlayDeathAnimation;
     }
 
     private void Update()
+    {
+        CheckEmpoweredState();
+
+        if(!inputGroup || !movementModule) return;
+
+        Move();
+    }
+
+    private void Move()
+    {
+        var direction = inputGroup.MovementDirection.normalized;
+        if(Mathf.Abs(direction.x) > 0f)
+            transform.localScale = new Vector3(Mathf.Sign(direction.x), 1, 1);
+
+        var walking = direction.magnitude > 0;
+        animator.SetBool(Walking, walking);
+        
+        movementModule.Move(direction);
+    }
+
+    private void CheckEmpoweredState()
     {
         var distance = Vector2.Distance(transform.position, otherCharacter.transform.position);
 
         Empowered = distance <= connectionRadius * 2;
         weaponModule.SetEmpowered(Empowered);
-        
-        if(!inputGroup || !movementModule) return;
-        
-        movementModule.Move(inputGroup.MovementDirection);
     }
 
     public void ReceiveExp(int expAmount)
@@ -53,6 +79,12 @@ public class PlayerCharacter : MonoBehaviour
             Level++;
             maxExperience = Mathf.RoundToInt(maxExperience * (1 + Level / 10f));
         }
+    }
+    
+    private void PlayDeathAnimation(HealthModule _)
+    {
+        animator.SetTrigger(Die);
+        // TODO Game Over
     }
 
     private void OnDrawGizmosSelected()
