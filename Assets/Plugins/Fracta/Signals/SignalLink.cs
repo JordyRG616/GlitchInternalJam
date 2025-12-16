@@ -17,9 +17,6 @@ public class SignalLink : MonoBehaviour
         {
             signalReference.Signal += InvokeCallbacks;
         }
-        else
-        {
-        }
     }
 
     private void InvokeCallbacks()
