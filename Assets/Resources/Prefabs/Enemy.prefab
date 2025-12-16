@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   damage: 1
+  dropTemplate: {fileID: 3662875617895320430, guid: a7dbc2495c384564eb60c61f22dfe6d8, type: 3}
 --- !u!114 &8096377949118285665
 MonoBehaviour:
   m_ObjectHideFlags: 0

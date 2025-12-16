@@ -29,7 +29,7 @@ public class WeaponModule : MonoBehaviour
 
     private void DoDamage(HealthModule healthModule)
     {
-        healthModule.TakeDamage(damage);
+        healthModule.TakeDamage(currentDamage, gameObject);
     }
 
     private void Aim()
