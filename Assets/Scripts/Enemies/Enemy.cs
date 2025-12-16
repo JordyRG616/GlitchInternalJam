@@ -3,15 +3,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private static readonly int Hit = Animator.StringToHash("Hit");
+    private static readonly int Die = Animator.StringToHash("Die");
+
+    public Signal<Enemy> OnDeathAnimationDone = new();
+    
     [SerializeField] private float damage;
+    [SerializeField] private Transform visual;
+    
+    private Vector3 visualPosition;
     
     private DropManager dropManager;
     
     private MovementModule movementModule;
     private HealthModule healthModule;
+    private Animator animator;
 
     private PlayerCharacter firstCharacter;
     private PlayerCharacter secondCharacter;
+
+    public bool Moving { get; set; } = true;
     
 
     private void Start()
@@ -20,14 +31,37 @@ public class Enemy : MonoBehaviour
         
         movementModule = GetComponent<MovementModule>();
         healthModule = GetComponent<HealthModule>();
-        healthModule.OnDeath += DropExperience;
+        animator = GetComponentInChildren<Animator>();
+        
+        healthModule.OnDamageTaken += PlayHitAnimation;
+        healthModule.OnDeath += TriggerDeathAnimation;
         
         var playerCharacters = FindObjectsByType<PlayerCharacter>(FindObjectsSortMode.None);
         firstCharacter = playerCharacters[0];
         secondCharacter = playerCharacters[1];
+        
+        visualPosition = visual.localPosition;
     }
 
-    private void DropExperience(HealthModule healthModule)
+    private void OnEnable()
+    {
+        Moving = true;
+    }
+
+    private void PlayHitAnimation(HealthData healthData)
+    {
+        animator.SetTrigger(Hit);
+        Moving = false;
+    }
+
+    private void TriggerDeathAnimation(HealthModule _)
+    {
+        animator.SetTrigger(Die);
+        visual.SetParent(null, true);
+        gameObject.SetActive(false);
+    }
+
+    public void DropExperience()
     {
         var killer = healthModule.LastAttacker.GetComponent<PlayerCharacter>();
         if (killer != null)
@@ -36,10 +70,16 @@ public class Enemy : MonoBehaviour
             var drop = dropManager.RequestExperienceDrop();
             drop.Setup(1, tag, transform.position);
         }
+        
+        visual.SetParent(transform);
+        visual.localPosition = visualPosition;
+        OnDeathAnimationDone.Fire(this);
     }
 
     private void Update()
     {
+        if(!Moving) return;
+        
         Move();
     }
 
@@ -60,7 +100,6 @@ public class Enemy : MonoBehaviour
         direction.Normalize();
         
         movementModule.Move(direction);
-        transform.up = direction;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -49,8 +49,7 @@ public class EnemySpawner : MonoBehaviour
             var enemy = pool.Get();
             enemy.transform.position = pos;
 
-            var healthModule = enemy.GetComponent<HealthModule>();
-            healthModule.OnDeath += ReturnToPool;
+            enemy.OnDeathAnimationDone += ReturnToPool;
 
             enemy.gameObject.SetActive(true);
 
@@ -58,9 +57,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void ReturnToPool(HealthModule healthModule)
+    private void ReturnToPool(Enemy enemy)
     {
-        var enemy = healthModule.GetComponent<Enemy>();
+        enemy.OnDeathAnimationDone -= ReturnToPool;        
         enemy.gameObject.SetActive(false);
         pool.Return(enemy);
     }
