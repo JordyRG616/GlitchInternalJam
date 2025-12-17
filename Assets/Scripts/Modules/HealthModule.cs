@@ -21,6 +21,11 @@ public class HealthModule : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    private void OnEnable()
+    {
+        currentHealth = maxHealth;
+    }
+
     public void TakeDamage(float amount, GameObject attacker)
     {
         currentHealth -= amount;

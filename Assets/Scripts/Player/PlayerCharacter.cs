@@ -20,7 +20,7 @@ public class PlayerCharacter : MonoBehaviour
     
     private MovementModule movementModule;
     private HealthModule healthModule;
-    private WeaponModule weaponModule;
+    private ArsenalController arsenalController;
     private Animator animator;
 
     private int currentExperience;
@@ -34,7 +34,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         movementModule = GetComponent<MovementModule>();
         healthModule = GetComponent<HealthModule>();
-        weaponModule = GetComponent<WeaponModule>();
+        arsenalController = GetComponent<ArsenalController>();
         animator = GetComponentInChildren<Animator>();
 
         healthModule.OnDeath += PlayDeathAnimation;
@@ -66,7 +66,7 @@ public class PlayerCharacter : MonoBehaviour
         var distance = Vector2.Distance(transform.position, otherCharacter.transform.position);
 
         Empowered = distance <= connectionRadius * 2;
-        weaponModule.SetEmpowered(Empowered);
+        arsenalController.SetEmpowered(Empowered);
     }
 
     public void ReceiveExp(int expAmount)

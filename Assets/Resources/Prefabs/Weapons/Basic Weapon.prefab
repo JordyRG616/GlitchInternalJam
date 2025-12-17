@@ -9810,7 +9810,7 @@ GameObject:
   - component: {fileID: 6962470559181872724}
   - component: {fileID: 732652567998147801}
   m_Layer: 0
-  m_Name: Particle Weapon
+  m_Name: Basic Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9927,7 +9927,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2

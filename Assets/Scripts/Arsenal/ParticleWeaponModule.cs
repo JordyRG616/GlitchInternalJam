@@ -1,15 +1,16 @@
 using System;
 using UnityEngine;
 
-public class ParticleWeaponModule : MonoBehaviour
+public class ParticleWeaponModule : MonoBehaviour, IWeaponModule
 {
+    public Signal<HealthModule> OnHit { get; set; } = new Signal<HealthModule>();
+    public ParticleSystem System => particleSystem;
+    
     private ParticleSystem particleSystem;
-    public Signal<HealthModule> OnParticleHit;
-
     private float originalSize;
     
 
-    private void Start()
+    public void Configure()
     {
         particleSystem = GetComponent<ParticleSystem>();
         originalSize = particleSystem.main.startSize.constant;
@@ -19,7 +20,7 @@ public class ParticleWeaponModule : MonoBehaviour
     {
         if (other.TryGetComponent(out HealthModule healthModule))
         {
-            OnParticleHit.Fire(healthModule);
+            OnHit.Fire(healthModule);
         }
     }
 
@@ -30,6 +31,7 @@ public class ParticleWeaponModule : MonoBehaviour
 
     public void SetSize(bool empowered)
     {
+        if(particleSystem == null) return;
         var main = particleSystem.main;
         main.startSize = empowered ? originalSize * 2: originalSize;
     }
