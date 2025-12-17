@@ -40,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
     {
         var waveAmount = Random.Range(waveAmountMinMax.x, waveAmountMinMax.y);
         var point = Random.insideUnitCircle.normalized * spawnRadius;
+        point += (Vector2)transform.position;
 
         for (int i = 0; i < waveAmount; i++)
         {
