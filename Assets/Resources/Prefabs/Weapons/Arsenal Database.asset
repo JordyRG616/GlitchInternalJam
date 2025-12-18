@@ -16,11 +16,17 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 6073631054493188750, guid: eb9043da1289b694b8db539650dbf025, type: 3}
     - {fileID: 1224912906272509264, guid: 48f68d526b6e01746a4bfb6b8a104a5a, type: 3}
+    - {fileID: 7095542976250386782, guid: 7d3f9af2993189c4aba31a40d11d5ef9, type: 3}
     - {fileID: 1906488581741581069, guid: 440f9af70c3ece845b022ba49ff25282, type: 3}
+    - {fileID: -6991437043147596039, guid: 7d3f9af2993189c4aba31a40d11d5ef9, type: 3}
     - {fileID: 1224912906272509264, guid: 4dd40eb84e96aa14fac166850c6505de, type: 3}
+    - {fileID: -5484022079431343666, guid: 7d3f9af2993189c4aba31a40d11d5ef9, type: 3}
     - {fileID: 1906488581741581069, guid: aa57d41ca05109d4f8a8239d6d9aff83, type: 3}
+    - {fileID: -3719701009781812537, guid: 7d3f9af2993189c4aba31a40d11d5ef9, type: 3}
     - {fileID: 1906488581741581069, guid: fd8184ed34c6fcc4cb9fab8cea38a81c, type: 3}
+    - {fileID: 2614355781860984956, guid: 7d3f9af2993189c4aba31a40d11d5ef9, type: 3}
     - {fileID: 7924567925801397099, guid: 573c545e85e9abb4cb717cfa106a295f, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -36,12 +42,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|BasicWeapon, Assembly-CSharp
+    - Name: icon
+      Entry: 10
+      Data: 0
     - Name: detectionRadius
       Entry: 4
       Data: 4
     - Name: weaponTemplate
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: damageRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -60,12 +69,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 2|LivingFire, Assembly-CSharp
+    - Name: icon
+      Entry: 10
+      Data: 2
     - Name: detectionRadius
       Entry: 4
       Data: 99
     - Name: weaponTemplate
       Entry: 10
-      Data: 1
+      Data: 3
     - Name: damageRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -93,12 +105,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 3|MagicSkull, Assembly-CSharp
+    - Name: icon
+      Entry: 10
+      Data: 4
     - Name: detectionRadius
       Entry: 4
       Data: 99
     - Name: weaponTemplate
       Entry: 10
-      Data: 2
+      Data: 5
     - Name: damageRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -117,12 +132,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 4|Shadow, Assembly-CSharp
+    - Name: icon
+      Entry: 10
+      Data: 6
     - Name: detectionRadius
       Entry: 4
       Data: 99
     - Name: weaponTemplate
       Entry: 10
-      Data: 3
+      Data: 7
     - Name: damageRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -147,12 +165,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 5|ShieldArea, Assembly-CSharp
+    - Name: icon
+      Entry: 10
+      Data: 8
     - Name: detectionRadius
       Entry: 4
       Data: 99
     - Name: weaponTemplate
       Entry: 10
-      Data: 4
+      Data: 9
     - Name: damageRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -171,12 +192,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 6|Shotgun, Assembly-CSharp
+    - Name: icon
+      Entry: 10
+      Data: 10
     - Name: detectionRadius
       Entry: 4
       Data: 2
     - Name: weaponTemplate
       Entry: 10
-      Data: 5
+      Data: 11
     - Name: damageRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
