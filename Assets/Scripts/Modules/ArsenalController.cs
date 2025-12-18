@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class ArsenalController : SerializedMonoBehaviour
 {
-    [SerializeField] private Weapon initialWeapon;
-    private List<Weapon> weapons = new List<Weapon>();
+    [SerializeField] private ArsenalDatabase arsenalDatabase;
+    [ShowInInspector] private List<Weapon> weapons = new List<Weapon>();
     
     public bool Empowered { get; private set; }
     
     
     private void Start()
     {
+        var initialWeapon = arsenalDatabase.GetRandomWeapon();
         initialWeapon.Initialize(this);
         weapons.Add(initialWeapon);
     }

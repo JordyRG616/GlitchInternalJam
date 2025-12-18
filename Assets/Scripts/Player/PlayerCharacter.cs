@@ -12,6 +12,9 @@ public class PlayerCharacter : MonoBehaviour
     private static readonly int Walking = Animator.StringToHash("Walking");
     private static readonly int Die = Animator.StringToHash("Die");
 
+    public Signal<ExpData> OnExpCollected = new Signal<ExpData>();
+    public Signal OnLevelUp = new Signal();
+    
     [SerializeField] private InputGroup inputGroup;
     [SerializeField] private PlayerCharacter otherCharacter;
     [field:SerializeField] public CharacterTag CharacterTag { get; private set; }
@@ -19,7 +22,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private float connectionRadius;
     
     private MovementModule movementModule;
-    private HealthModule healthModule;
+    public HealthModule healthModule;
     private ArsenalController arsenalController;
     private Animator animator;
 
@@ -37,7 +40,15 @@ public class PlayerCharacter : MonoBehaviour
         arsenalController = GetComponent<ArsenalController>();
         animator = GetComponentInChildren<Animator>();
 
+        var otherHealth = otherCharacter.GetComponent<HealthModule>();
+        otherHealth.OnDamageTaken += BroadcastDamage;
+        
         healthModule.OnDeath += PlayDeathAnimation;
+    }
+
+    private void BroadcastDamage(HealthData healthData)
+    {
+        healthModule.TakeDamageWithoutNotify(healthData.damageTaken, healthData.attacker);
     }
 
     private void Update()
@@ -78,7 +89,11 @@ public class PlayerCharacter : MonoBehaviour
             currentExperience -= maxExperience;
             Level++;
             maxExperience = Mathf.RoundToInt(maxExperience * (1 + Level / 10f));
+            
+            OnLevelUp.Fire();
         }
+        
+        OnExpCollected.Fire(new ExpData(currentExperience, maxExperience, Level));       
     }
     
     private void PlayDeathAnimation(HealthModule _)
@@ -90,5 +105,21 @@ public class PlayerCharacter : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, connectionRadius);
+    }
+}
+
+
+public struct ExpData
+{
+    public float experience;
+    public int maxExperience;
+    public int level;
+
+
+    public ExpData(int experience, int maxExperience, int level)
+    {
+        this.experience = experience;
+        this.maxExperience = maxExperience;
+        this.level = level;
     }
 }

@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,9 +106,9 @@ TextureImporter:
         x: 0
         y: 0
         width: 341
-        height: 43
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -117,6 +117,28 @@ TextureImporter:
       bones: []
       spriteID: 517b863c79ebfadc0800000000000000
       internalID: -3625469615982201067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_Container_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 15
+        width: 107
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbad06e6a6774f445909a420bbb0da15
+      internalID: 767520235
       vertices: []
       indices: 
       edges: []
@@ -136,6 +158,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       HUD_Container_0: -3625469615982201067
+      HUD_Container_1: 767520235
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

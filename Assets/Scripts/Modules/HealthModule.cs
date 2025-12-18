@@ -35,6 +35,14 @@ public class HealthModule : MonoBehaviour
         if (currentHealth <= 0)
             Die();
     }
+    
+    public void TakeDamageWithoutNotify(float amount, GameObject attacker)
+    {
+        currentHealth -= amount;
+        
+        if (currentHealth <= 0)
+            Die();
+    }
 
     private void FireHealthEvent(float amount, GameObject attacker)
     {
