@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,8 +13,11 @@ public class PickThreeBox : ReactiveScreenElement
     [Space]
     [SerializeField] private TextMeshProUGUI header;
     [SerializeField] private TextMeshProUGUI body;
+    [Space]
+    [SerializeField] private ArsenalController arsenalController;
 
     private WeaponUpgrade currentUpgrade = null;
+    private Weapon currentWeapon = null;
 
 
     private void Start()
@@ -26,8 +30,18 @@ public class PickThreeBox : ReactiveScreenElement
 
     private void ChooseThis(PointerEventData obj)
     {
-        currentUpgrade.Apply();
+        if (currentWeapon != null)
+        {
+            arsenalController.ReceiveWeapon(currentWeapon);
+        }
+
+        if (currentUpgrade != null)
+        {
+            currentUpgrade.Apply();
+        }
+        
         currentUpgrade = null;
+        currentWeapon = null;
         OnChoiceMade.Fire();
     }
 
@@ -38,5 +52,14 @@ public class PickThreeBox : ReactiveScreenElement
         icon.sprite = upgrade.weaponIcon;
         header.text = upgrade.upgradeName;
         body.text = upgrade.upgradeDescription;
+    }
+
+    public void ReceiveWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
+
+        icon.sprite = weapon.icon;
+        header.text = weapon.name;
+        body.text = weapon.description;
     }
 }

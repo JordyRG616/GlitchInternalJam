@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RewardManager : FractaManager
 {
@@ -13,7 +14,12 @@ public class RewardManager : FractaManager
     [Space]
     [SerializeField] private GameObject rightHeader;
     [SerializeField] private List<PickThreeBox> rightBoxes;
+    [Space]
+    [SerializeField] private ArsenalDatabase arsenalDatabase;
 
+    private float chanceOfLeftWeapon = .1f;    
+    private float chanceOfRightWeapon = .1f;    
+    
     private List<WeaponUpgrade> currentLeftUpgrades = new List<WeaponUpgrade>();
     private List<WeaponUpgrade> currentRightUpgrades = new List<WeaponUpgrade>();
     
@@ -47,7 +53,18 @@ public class RewardManager : FractaManager
 
         foreach (var box in rightBoxes)
         {
-            box.ReceiveUpgrade(rewards.TakeRandom(true));
+            if (Random.value < chanceOfRightWeapon)
+            {
+                var weapon = arsenalDatabase.GetRandomWeapon();
+                box.ReceiveWeapon(weapon);
+                chanceOfRightWeapon = 0;
+            }
+            else
+            {
+                box.ReceiveUpgrade(rewards.TakeRandom(true));
+                chanceOfRightWeapon += .1f;
+            }
+
             box.gameObject.SetActive(true);
         }
         
@@ -60,7 +77,18 @@ public class RewardManager : FractaManager
 
         foreach (var box in leftBoxes)
         {
-            box.ReceiveUpgrade(rewards.TakeRandom(true));
+            if (Random.value < chanceOfLeftWeapon)
+            {
+                var weapon = arsenalDatabase.GetRandomWeapon();
+                box.ReceiveWeapon(weapon);
+                chanceOfLeftWeapon = 0;
+            }
+            else
+            {
+                box.ReceiveUpgrade(rewards.TakeRandom(true));
+                chanceOfLeftWeapon += .1f;
+            }
+            
             box.gameObject.SetActive(true);
         }
         
