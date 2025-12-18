@@ -18,6 +18,30 @@ public class Shadow : ObjectWeapon
         currentInterval = interval;
         var arsenal = owner.GetComponent<ArsenalController>();
         arsenal.StartCoroutine(HandleSpawn());
+        
+        var rewardManager = FractaGlobal.GetManager<RewardManager>();
+
+        var durationUpgrade = new WeaponUpgrade(
+            "Shadow: Duration",
+            "Increases the duration of the area by 10%",
+            icon,
+            UpgradeDuration);
+
+        var damageUpgrade = new WeaponUpgrade(
+            "Shadow: Damage",
+            "Min. damage per second -10%\nMax. damage per second +10%",
+            icon,
+            UpgradeDamage);
+
+        var intervalUpgrade = new WeaponUpgrade(
+            "Shadow: Spawn rate",
+            "Increases the spawn rate by 15%",
+            icon,
+            UpgradeInterval);
+        
+        rewardManager.ReceiveUpgrade(durationUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(damageUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(intervalUpgrade, owner.gameObject);
     }
 
     protected IEnumerator HandleSpawn()
@@ -58,7 +82,6 @@ public class Shadow : ObjectWeapon
 
     public override void DoDamage(HealthModule healthModule)
     {
-        Debug.Log("Shadow damage");
         var damage = Random.Range(damageRange.x, damageRange.y);
         
         healthModule.TakeDamage(damage, owner.gameObject);
@@ -69,5 +92,31 @@ public class Shadow : ObjectWeapon
         var intervalChange = empowered ? .66f : 1f;
         
         currentInterval = intervalChange * interval;
+    }
+
+    protected override Weapon Clone()
+    {
+        return new Shadow()
+        {
+            damageRange = damageRange,
+            interval = interval,
+            duration = duration
+        };
+    }
+
+    private void UpgradeDamage()
+    {
+        damageRange.x *= .9f;
+        damageRange.y *= 1.1f;
+    }
+
+    private void UpgradeDuration()
+    {
+        duration *= 1.1f;
+    }
+
+    private void UpgradeInterval()
+    {
+        interval /= 1.15f;
     }
 }

@@ -10,6 +10,30 @@ public class MagicSkull : ParticleWeapon
     {
         module.OnHit += DoDamage;
         particleWeapon.gameObject.SetActive(true);
+
+        var rewardManager = FractaGlobal.GetManager<RewardManager>();
+
+        var countUpgrade = new WeaponUpgrade(
+            "Magic Skull: Skull",
+            "Spawns an addition skull",
+            icon,
+            UpgradeCount);
+        
+        var speedUpgrade = new WeaponUpgrade(
+            "Magic Skull: Speed",
+            "Increases the speed of the skulls by 15%",
+            icon,
+            UpgradeSpeed);
+
+        var damageUpgrade = new WeaponUpgrade(
+            "Magic Skull: Damage",
+            "Increases Min. and Max. damage by 1",
+            icon,
+            UpgradeDamage);
+        
+        rewardManager.ReceiveUpgrade(damageUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(speedUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(countUpgrade, owner.gameObject);
     }
 
     public override void Aim(Transform currentTarget)
@@ -30,5 +54,35 @@ public class MagicSkull : ParticleWeapon
 
         var shape = particleWeapon.System.shape;
         shape.radius = size;
+    }
+
+    protected override Weapon Clone()
+    {
+        return new MagicSkull()
+        {
+            damageRange = damageRange
+        };
+    }
+
+    private void UpgradeCount()
+    {
+        particleWeapon.System.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        var emission = particleWeapon.System.emission;
+        var burst = emission.GetBurst(0);
+        burst.count = new ParticleSystem.MinMaxCurve(burst.count.constant + 1);
+        
+        emission.SetBurst(0, burst);
+        particleWeapon.System.Play();
+    }
+
+    private void UpgradeSpeed()
+    {
+        var main = particleWeapon.System.main;
+        main.startSpeedMultiplier += .15f;
+    }
+
+    private void UpgradeDamage()
+    {
+        damageRange += Vector2.one;
     }
 }
