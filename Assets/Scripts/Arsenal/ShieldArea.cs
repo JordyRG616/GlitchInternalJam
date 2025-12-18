@@ -21,21 +21,24 @@ public class ShieldArea : ObjectWeapon
         var damageUpgrade = new WeaponUpgrade(
             "Shield: Damage",
             "Increases Min Damage by 10%\nIncreases Max Damage by 15%",
+            icon,
             UpgradeDamage);
         
         var sizeUpgrade = new WeaponUpgrade(
             "Shield: Size",
             "Increases the size of the shield by 15%",
+            icon,
             UpgradeSize);
 
         var upgradeChance = new WeaponUpgrade(
             "Shied: Max damage chance",
             "Increases chance of max damage by 5%",
+            icon,
             UpgradeMaxDamageChance);
         
-        rewardManager.ReceiveUpgrade(damageUpgrade);
-        rewardManager.ReceiveUpgrade(sizeUpgrade);
-        rewardManager.ReceiveUpgrade(upgradeChance);
+        rewardManager.ReceiveUpgrade(damageUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(sizeUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(upgradeChance, owner.gameObject);
     }
 
     public override void Aim(Transform currentTarget)

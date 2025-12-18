@@ -22,23 +22,26 @@ public class Shotgun : ParticleWeapon
         var damageUpgrade = new WeaponUpgrade(
             "Shotgun: Damage",
             "Increases damage by 10%",
+            icon,
             UpgradeDamage
         );
 
         var knockbackUpgrade = new WeaponUpgrade(
             "Shotgun: Knockback",
             "Increases knockback by 15%",
+            icon,
             UpgradeKnockback
         );
 
         var rangeUpgrade = new WeaponUpgrade(
             "Shotgun: Range",
             "Increases range by 15%",
+            icon,
             UpgradeRange);
         
-        rewardManager.ReceiveUpgrade(damageUpgrade);
-        rewardManager.ReceiveUpgrade(knockbackUpgrade);
-        rewardManager.ReceiveUpgrade(rangeUpgrade);
+        rewardManager.ReceiveUpgrade(damageUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(knockbackUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(rangeUpgrade, owner.gameObject);
     }
 
     public override void DoDamage(HealthModule healthModule)

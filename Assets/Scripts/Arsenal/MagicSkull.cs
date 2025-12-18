@@ -16,21 +16,24 @@ public class MagicSkull : ParticleWeapon
         var countUpgrade = new WeaponUpgrade(
             "Magic Skull: Skull",
             "Spawns an addition skull",
+            icon,
             UpgradeCount);
         
         var speedUpgrade = new WeaponUpgrade(
             "Magic Skull: Speed",
             "Increases the speed of the skulls by 15%",
+            icon,
             UpgradeSpeed);
 
         var damageUpgrade = new WeaponUpgrade(
             "Magic Skull: Damage",
             "Increases Min. and Max. damage by 1",
+            icon,
             UpgradeDamage);
         
-        rewardManager.ReceiveUpgrade(damageUpgrade);
-        rewardManager.ReceiveUpgrade(speedUpgrade);
-        rewardManager.ReceiveUpgrade(countUpgrade);
+        rewardManager.ReceiveUpgrade(damageUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(speedUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(countUpgrade, owner.gameObject);
     }
 
     public override void Aim(Transform currentTarget)

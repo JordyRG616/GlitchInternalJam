@@ -25,21 +25,24 @@ public class LivingFire : ObjectWeapon
         var durationUpgrade = new WeaponUpgrade(
             "Living fire: Duration",
             "Increases the duration of the area by 10%",
+            icon,
             UpgradeDuration);
 
         var damageUpgrade = new WeaponUpgrade(
             "Living fire: Damage",
             "Min. damage per second +0.25\nMax. damage per second +0.5",
+            icon,
             UpgradeDamage);
 
         var intervalUpgrade = new WeaponUpgrade(
             "Living fire: Spawn rate",
             "Increases the spawn rate by 10%",
+            icon,
             UpgradeInterval);
         
-        rewardManager.ReceiveUpgrade(durationUpgrade);
-        rewardManager.ReceiveUpgrade(damageUpgrade);
-        rewardManager.ReceiveUpgrade(intervalUpgrade);
+        rewardManager.ReceiveUpgrade(durationUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(damageUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(intervalUpgrade, owner.gameObject);
     }
 
     protected IEnumerator HandleSpawn()

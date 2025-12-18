@@ -8,6 +8,7 @@ public interface IWeaponModule
 [System.Serializable]
 public abstract class Weapon
 {
+    public Sprite icon;
     public float detectionRadius;
     protected Transform owner;
 
@@ -68,6 +69,7 @@ public abstract class ParticleWeapon : Weapon
         var clone = Clone() as ParticleWeapon;
         clone.weaponTemplate = weaponTemplate;
         clone.detectionRadius = detectionRadius;
+        clone.icon = icon;
         return clone;
     }
 }
@@ -89,6 +91,7 @@ public abstract class ObjectWeapon : Weapon
         var clone = Clone() as ObjectWeapon;
         clone.weaponTemplate = weaponTemplate;
         clone.detectionRadius = detectionRadius;
+        clone.icon = icon;
         return clone;
     }
 }

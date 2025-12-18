@@ -24,21 +24,24 @@ public class Shadow : ObjectWeapon
         var durationUpgrade = new WeaponUpgrade(
             "Shadow: Duration",
             "Increases the duration of the area by 10%",
+            icon,
             UpgradeDuration);
 
         var damageUpgrade = new WeaponUpgrade(
             "Shadow: Damage",
             "Min. damage per second -10%\nMax. damage per second +10%",
+            icon,
             UpgradeDamage);
 
         var intervalUpgrade = new WeaponUpgrade(
             "Shadow: Spawn rate",
             "Increases the spawn rate by 15%",
+            icon,
             UpgradeInterval);
         
-        rewardManager.ReceiveUpgrade(durationUpgrade);
-        rewardManager.ReceiveUpgrade(damageUpgrade);
-        rewardManager.ReceiveUpgrade(intervalUpgrade);
+        rewardManager.ReceiveUpgrade(durationUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(damageUpgrade, owner.gameObject);
+        rewardManager.ReceiveUpgrade(intervalUpgrade, owner.gameObject);
     }
 
     protected IEnumerator HandleSpawn()
