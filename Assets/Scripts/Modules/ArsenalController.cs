@@ -45,4 +45,10 @@ public class ArsenalController : SerializedMonoBehaviour
         
         weapons.ForEach(x => x.SetEmpowered(empowered));
     }
+
+    public void ReceiveWeapon(Weapon weapon)
+    {
+        weapon.Initialize(this);
+        weapons.Add(weapon);
+    }
 }

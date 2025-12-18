@@ -9,6 +9,9 @@ public interface IWeaponModule
 public abstract class Weapon
 {
     public Sprite icon;
+    public string name;
+    [TextArea] public string description;
+    [Space]
     public float detectionRadius;
     protected Transform owner;
 
