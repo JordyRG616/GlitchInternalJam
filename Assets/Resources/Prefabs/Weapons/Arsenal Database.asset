@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665dde06bcd99245a2d391f7bde19b6, type: 3}
+  m_Name: Arsenal Database
+  m_EditorClassIdentifier: Assembly-CSharp::ArsenalDatabase
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1224912906272509264, guid: 48f68d526b6e01746a4bfb6b8a104a5a, type: 3}
+    - {fileID: 1906488581741581069, guid: 440f9af70c3ece845b022ba49ff25282, type: 3}
+    - {fileID: 1224912906272509264, guid: 4dd40eb84e96aa14fac166850c6505de, type: 3}
+    - {fileID: 1906488581741581069, guid: aa57d41ca05109d4f8a8239d6d9aff83, type: 3}
+    - {fileID: 1906488581741581069, guid: fd8184ed34c6fcc4cb9fab8cea38a81c, type: 3}
+    - {fileID: 7924567925801397099, guid: 573c545e85e9abb4cb717cfa106a295f, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: weapons
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[Weapon, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 1|BasicWeapon, Assembly-CSharp
+    - Name: detectionRadius
+      Entry: 4
+      Data: 4
+    - Name: weaponTemplate
+      Entry: 10
+      Data: 0
+    - Name: damageRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|LivingFire, Assembly-CSharp
+    - Name: detectionRadius
+      Entry: 4
+      Data: 99
+    - Name: weaponTemplate
+      Entry: 10
+      Data: 1
+    - Name: damageRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: interval
+      Entry: 4
+      Data: 4
+    - Name: duration
+      Entry: 4
+      Data: 3
+    - Name: maxDistance
+      Entry: 4
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|MagicSkull, Assembly-CSharp
+    - Name: detectionRadius
+      Entry: 4
+      Data: 99
+    - Name: weaponTemplate
+      Entry: 10
+      Data: 2
+    - Name: damageRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|Shadow, Assembly-CSharp
+    - Name: detectionRadius
+      Entry: 4
+      Data: 99
+    - Name: weaponTemplate
+      Entry: 10
+      Data: 3
+    - Name: damageRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 4
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: interval
+      Entry: 4
+      Data: 3
+    - Name: duration
+      Entry: 4
+      Data: 1.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|ShieldArea, Assembly-CSharp
+    - Name: detectionRadius
+      Entry: 4
+      Data: 99
+    - Name: weaponTemplate
+      Entry: 10
+      Data: 4
+    - Name: damageRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|Shotgun, Assembly-CSharp
+    - Name: detectionRadius
+      Entry: 4
+      Data: 2
+    - Name: weaponTemplate
+      Entry: 10
+      Data: 5
+    - Name: damageRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 2
+    - Name: 
+      Entry: 4
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

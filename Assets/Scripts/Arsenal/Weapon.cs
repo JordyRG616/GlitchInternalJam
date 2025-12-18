@@ -5,6 +5,7 @@ public interface IWeaponModule
     public Signal<HealthModule> OnHit { get; set; }
 }
 
+[System.Serializable]
 public abstract class Weapon
 {
     public float detectionRadius;
@@ -21,6 +22,12 @@ public abstract class Weapon
     public abstract void DoDamage(HealthModule healthModule);
     public abstract void SetEmpowered(bool empowered);
 
+    protected abstract Weapon Clone();
+
+    public virtual Weapon GetInstance()
+    {
+        return Clone();
+    }
 
     // {
     //     var damageAmount = currentDamage * damageMultiplier;
@@ -55,6 +62,14 @@ public abstract class ParticleWeapon : Weapon
             particleWeapon.transform.up = direction.normalized;
         }
     }
+
+    public override Weapon GetInstance()
+    {
+        var clone = Clone() as ParticleWeapon;
+        clone.weaponTemplate = weaponTemplate;
+        clone.detectionRadius = detectionRadius;
+        return clone;
+    }
 }
 
 [System.Serializable]
@@ -67,5 +82,13 @@ public abstract class ObjectWeapon : Weapon
         base.Initialize(owner);
         
         Configure(weaponTemplate);
+    }
+    
+    public override Weapon GetInstance()
+    {
+        var clone = Clone() as ObjectWeapon;
+        clone.weaponTemplate = weaponTemplate;
+        clone.detectionRadius = detectionRadius;
+        return clone;
     }
 }

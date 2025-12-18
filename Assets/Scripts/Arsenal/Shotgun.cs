@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[System.Serializable]
-public class BasicWeapon : ParticleWeapon
+public class Shotgun : ParticleWeapon
 {
     [SerializeField] private Vector2 damageRange;
     
@@ -17,28 +16,28 @@ public class BasicWeapon : ParticleWeapon
     protected override void Configure(IWeaponModule module)
     {
         module.OnHit += DoDamage;
-
+        
         var rewardManager = FractaGlobal.GetManager<RewardManager>();
 
         var damageUpgrade = new WeaponUpgrade(
-            "Basic: Damage",
+            "Shotgun: Damage",
             "Increases damage by 10%",
             UpgradeDamage
         );
 
-        var fireRateUpgrade = new WeaponUpgrade(
-            "Basic: Fire Rate",
-            "Increases fire rate by 15%",
-            UpgradeFireRate
+        var knockbackUpgrade = new WeaponUpgrade(
+            "Shotgun: Knockback",
+            "Increases knockback by 15%",
+            UpgradeKnockback
         );
 
         var rangeUpgrade = new WeaponUpgrade(
-            "Basic: Range",
-            "Increases range by 10%",
+            "Shotgun: Range",
+            "Increases range by 15%",
             UpgradeRange);
         
         rewardManager.ReceiveUpgrade(damageUpgrade);
-        rewardManager.ReceiveUpgrade(fireRateUpgrade);
+        rewardManager.ReceiveUpgrade(knockbackUpgrade);
         rewardManager.ReceiveUpgrade(rangeUpgrade);
     }
 
@@ -61,7 +60,7 @@ public class BasicWeapon : ParticleWeapon
 
     protected override Weapon Clone()
     {
-        return new BasicWeapon()
+        return new Shotgun()
         {
             damageRange = damageRange
         };
@@ -69,19 +68,20 @@ public class BasicWeapon : ParticleWeapon
 
     private void UpgradeDamage()
     {
-        _damageMultiplier += .1f;
-    }
-
-    private void UpgradeFireRate()
-    {
-        var main = particleWeapon.System.main;
-        main.duration *= .85f;
+        damageRange *= 1.1f;
     }
 
     private void UpgradeRange()
     {
+        detectionRadius *= 1.15f;
+
         var main = particleWeapon.System.main;
-        main.startLifetimeMultiplier += .1f;
-        detectionRadius *= 1.1f;
+        main.startLifetimeMultiplier += .2f;
+    }
+
+    private void UpgradeKnockback()
+    {
+        var coll = particleWeapon.System.collision;
+        coll.colliderForce *= 1.15f;
     }
 }
